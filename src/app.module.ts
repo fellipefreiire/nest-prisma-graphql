@@ -6,8 +6,10 @@ import { PrismaModule } from 'nestjs-prisma'
 import { AppController } from './app.controller'
 import { AppResolver } from './app.resolver'
 import { AppService } from './app.service'
+import { AuthModule } from './auth/auth.module'
 import config from './common/configs/config'
 import { GqlConfigService } from './gql-config.service'
+import { UserModule } from './user/user.module'
 
 @Module({
   imports: [
@@ -19,7 +21,10 @@ import { GqlConfigService } from './gql-config.service'
     GraphQLModule.forRootAsync<ApolloDriverConfig>({
       driver: ApolloDriver,
       useClass: GqlConfigService,
-    })
+    }),
+
+    AuthModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService, AppResolver],
