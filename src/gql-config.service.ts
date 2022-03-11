@@ -6,7 +6,7 @@ import { GqlOptionsFactory } from '@nestjs/graphql';
 
 @Injectable()
 export class GqlConfigService implements GqlOptionsFactory {
-  constructor(private configService: ConfigService) {}
+  constructor(private configService: ConfigService) { }
   createGqlOptions(): ApolloDriverConfig {
     const graphqlConfig = this.configService.get<GraphqlConfig>('graphql');
     return {
@@ -21,6 +21,9 @@ export class GqlConfigService implements GqlOptionsFactory {
       debug: graphqlConfig.debug,
       playground: graphqlConfig.playgroundEnabled,
       context: ({ req }) => ({ req }),
+
+      // deploy
+      introspection: true
     };
   }
 }
