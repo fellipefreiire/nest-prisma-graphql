@@ -1,6 +1,6 @@
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("DATABASE_URLS")
 }
 
 generator client {
@@ -17,4 +17,38 @@ model User {
   updatedAt DateTime @updatedAt
   email     String   @unique
   password  String
+}
+
+model Residencia {
+  id                String   @id @default(uuid())
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  tipoSeguro        String
+  nome              String
+  pessoa            String?
+  cnpj              String?
+  cpf               String?
+  email             String
+  telefone          String
+  formaContato      String
+  cep               String?
+  rua               String?
+  numero            String?
+  complemento       String?
+  bairro            String?
+  cidade            String?
+  estado            String?
+  tipoImovel        String?
+  tipoTomador       String?
+  tipoConstrucao    String?
+  tipoResidencia    String?
+  escritorio        String?
+  comercial         String?
+  condominioFechado String?
+  alarme            String?
+  gradeJanelas      String?
+  vigia             String?
+  valorImovel       String?
+  valorConteudo     String?
+  seguro            String
 }
