@@ -9,6 +9,7 @@ import { AppService } from './app.service'
 import { AuthModule } from './auth/auth.module'
 import config from './common/configs/config'
 import { GqlConfigService } from './gql-config.service'
+import { ResidenciaModule } from './residencia/residencia.module'
 import { UserModule } from './user/user.module'
 
 @Module({
@@ -25,6 +26,7 @@ import { UserModule } from './user/user.module'
 
     AuthModule,
     UserModule,
+    ResidenciaModule
   ],
   controllers: [AppController],
   providers: [AppService, AppResolver],
