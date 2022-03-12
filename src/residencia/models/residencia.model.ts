@@ -2,7 +2,7 @@ import {
   Field,
   ObjectType,
 } from '@nestjs/graphql';
-import { BaseModel } from '../../../../../Nest/Personal/rcabralstart/secondtry/src/common/models/base.model';
+import { BaseModel } from '../../common/models/base.model';
 
 @ObjectType()
 export class Residencia extends BaseModel {
