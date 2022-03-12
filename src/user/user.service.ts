@@ -13,7 +13,11 @@ export class UserService {
   ) { }
 
   createUser(newUserData: CreateUserInput) {
-    return this.prisma.user.create(newUserData)
+    return this.prisma.user.create({
+      data: {
+        ...newUserData
+      }
+    })
   }
 
   updateUser(userId: string, newUserData: UpdateUserInput) {
