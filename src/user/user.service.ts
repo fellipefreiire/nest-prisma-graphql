@@ -3,6 +3,7 @@ import { Injectable, BadRequestException } from '@nestjs/common';
 import { PasswordService } from 'src/auth/password.service';
 import { ChangePasswordInput } from './dto/change-password.input';
 import { UpdateUserInput } from './dto/update-user.input';
+import { CreateUserInput } from './dto/create-user.input';
 
 @Injectable()
 export class UserService {
@@ -10,6 +11,10 @@ export class UserService {
     private prisma: PrismaService,
     private passwordService: PasswordService
   ) { }
+
+  createUser(newUserData: CreateUserInput) {
+    return this.prisma.user.create(newUserData)
+  }
 
   updateUser(userId: string, newUserData: UpdateUserInput) {
     return this.prisma.user.update({

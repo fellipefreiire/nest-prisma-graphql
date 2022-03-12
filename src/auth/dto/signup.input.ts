@@ -11,10 +11,4 @@ export class SignupInput {
   @IsNotEmpty()
   @MinLength(8)
   password: string;
-
-  @Field({ nullable: true })
-  firstname?: string;
-
-  @Field({ nullable: true })
-  lastname?: string;
 }

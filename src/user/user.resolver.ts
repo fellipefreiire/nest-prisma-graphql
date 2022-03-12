@@ -11,9 +11,9 @@ import { UserService } from './user.service';
 import { User } from './models/user.model';
 import { ChangePasswordInput } from './dto/change-password.input';
 import { UpdateUserInput } from './dto/update-user.input';
+import { CreateUserInput } from './dto/create-user.input';
 
 @Resolver(() => User)
-@UseGuards(GqlAuthGuard)
 export class UserResolver {
   constructor(
     private userService: UserService,
@@ -22,6 +22,13 @@ export class UserResolver {
   @Query(() => User)
   async me(@UserEntity() user: User): Promise<User> {
     return user;
+  }
+
+  @Mutation(() => User)
+  async createUser(
+    @Args('data') newUserData: CreateUserInput
+  ) {
+    return this.userService.createUser(newUserData);
   }
 
   @UseGuards(GqlAuthGuard)
